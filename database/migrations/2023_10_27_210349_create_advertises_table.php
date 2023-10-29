@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\State;
+use App\Models\Category;
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -19,10 +22,10 @@ return new class extends Migration
             $table->boolean('negotiable')->default(false);
             $table->text('description');
             $table->string('contact');
-            $table->string('views');
-            $table->integer('user_id');
-            $table->integer('state_id');
-            $table->integer('category_id');
+            $table->integer('views');
+            $table->foreignIdFor(User::class);
+            $table->foreignIdFor(State::class);
+            $table->foreignIdFor(Category::class);
             $table->timestamps();
         });
     }
