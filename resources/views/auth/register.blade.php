@@ -17,22 +17,42 @@
         <div class="text-login">
           Preencha os campos abaixo e realize seu cadastro.
         </div>
-        <form>
+        <form method="POST" action="{{ route('register_action') }}">
+          @csrf
+
           <div class="name-area">
             <div class="name-label">Nome</div>
-            <input type="text" placeholder="Digite o seu nome" />
+            <input type="text" class="@error('name') is_invalid @enderror" name="name" placeholder="Digite o seu nome" value="{{ @old('name') }}" />
+            @error('name')
+              <div class="error">
+                {{ $message }}
+              </div>
+            @enderror
           </div>
           <div class="email-area">
             <div class="email-label">E-mail</div>
-            <input type="email" placeholder="Digite o seu e-mail" />
+            <input type="email" name="email" placeholder="Digite o seu e-mail" value="{{ @old('email') }}" class="@error('email') is_invalid @enderror" />
+            @error('email')
+              <div class="error">
+                {{ $message }}
+              </div>
+            @enderror
           </div>
           <div class="password-area">
-            <div class="password-label">Senha</div>
-            <div class="password-input-area">
-              <input type="password" placeholder="Digite a sua senha" />
-              <img src="assets/icons/eyeIcon.png" alt="Ícone mostrar senha" />
-            </div>
+            <div class="password-label">Senha</div>            
+            <x-form.password-input name="password" placeholder="Digite sua senha" id="confirmeSenha" />
+            @error('password')
+              <div class="error">
+                {{ $message }}
+              </div>
+            @enderror
           </div>
+
+          <div class="password-area">
+            <div class="password-label">Confirme sua Senha</div>
+            <x-form.password-input name="password_confirmation" placeholder="Confirme sua senha" id="confirmeSenha_confirmation" />
+          </div>
+
           <button class="login-button">Cadastrar</button>
         </form>
         <div class="register-area">

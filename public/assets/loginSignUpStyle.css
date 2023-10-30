@@ -1,6 +1,17 @@
 :root {
   --footerHeight: 92px;
 }
+/*
+* Errors
+*/
+.error {
+  padding: 5px 10px;
+  background-color: rgba(255,0,0,0.2);
+}
+.is_invalid {
+  border: 1px solid rgba(255,0,0,0.2) !important;
+}
+
 /* 
 * Back Buttom
 */
@@ -26,16 +37,15 @@
 */
 .login-page {
   width: 100%;
-  max-height: calc(85vh - var(--footerHeight));
+  min-height: calc(100vh- var(--footerHeight));
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 50px;
+  margin-top: 20px;
 }
 .login-area {
   width: 100%;
   max-width: 640px;
-  height: 700px;
   border: 1px solid #e7e9ed;
   display: flex;
   flex-direction: column;
@@ -73,6 +83,7 @@ form {
   line-height: normal;
 }
 .name-area input,
+.state-area select,
 .email-area input,
 .password-input-area input {
   width: 100%;
@@ -86,6 +97,9 @@ form {
   outline: 0;
 }
 .email-area {
+  margin-top: 24px;
+}
+.state-area {
   margin-top: 24px;
 }
 .password-label {
@@ -140,8 +154,8 @@ form {
   font-size: 14px;
   font-weight: 400;
   line-height: 19px;
-  margin-top: 44px;
-  margin-bottom: 100px;
+  margin-top: 75px;
+  /* margin-bottom: 100px; */
 }
 /* 
 * /Login Page
