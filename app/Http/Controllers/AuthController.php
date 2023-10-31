@@ -60,18 +60,20 @@ class AuthController extends Controller
         //dd($request);
         $loginData = $request->only(['email', 'password']);
 
-        if(Auth::attempt($loginData)) {
-            $user = Auth::user();
-        } else {
+        // if(Auth::attempt($loginData)) {
+        //     $user = Auth::user();
+        //     //dd($user);
+        // } else {
+        //     //dd('Não foi...');
+        //     $data['message'] = 'E-mail e/ou senha errados!';
+        //     $data['email'] = $loginData['email'];
+        //     return view('auth.login', $data);
+        // }
+        if (!Auth::attempt($loginData)) {
             $data['message'] = 'Usuário e/ou senha errados!';
             $data['email'] = $loginData['email'];
             return view('auth.login', $data);
         }
-        // if (!Auth::attempt($loginData)) {
-        //     $data['message'] = 'Usuário e/ou senha errados!';
-        //     $data['email'] = $loginData['email'];
-        //     return view('auth.login', $data);
-        // }
         return redirect()->route('home');
     }
 }

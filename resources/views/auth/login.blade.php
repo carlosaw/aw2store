@@ -18,7 +18,10 @@
           Use as suas credenciais para realizar o Login.
         </div>
         <form method="POST" action="{{ route('login_action') }}">
-          
+          @if(isset($message))             
+            <p class="error">{{ $message }}</p>               
+          @endif
+
           @csrf
           
           <div class="email-area">
