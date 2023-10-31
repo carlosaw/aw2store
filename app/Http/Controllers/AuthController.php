@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\LoginRequest;
 use App\Models\State;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -26,7 +27,7 @@ class AuthController extends Controller
         $user = User::create($userData);
 
         Auth::loginUsingId($user->id);
-        return redirect()->route('select-state');
+        return redirect('/select-state');
         dd($user);
     }
 
@@ -51,6 +52,26 @@ class AuthController extends Controller
         $user = Auth::user();
         $user->state_id = $stateRegister->id;
         $user->save();
+        return redirect()->route('home');
+    }
+
+    public function login_action(LoginRequest $request)
+    {
+        //dd($request);
+        $loginData = $request->only(['email', 'password']);
+
+        if(Auth::attempt($loginData)) {
+            $user = Auth::user();
+        } else {
+            $data['message'] = 'Usuário e/ou senha errados!';
+            $data['email'] = $loginData['email'];
+            return view('auth.login', $data);
+        }
+        // if (!Auth::attempt($loginData)) {
+        //     $data['message'] = 'Usuário e/ou senha errados!';
+        //     $data['email'] = $loginData['email'];
+        //     return view('auth.login', $data);
+        // }
         return redirect()->route('home');
     }
 }
