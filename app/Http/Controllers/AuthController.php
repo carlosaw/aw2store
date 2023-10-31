@@ -59,7 +59,6 @@ class AuthController extends Controller
     {
         //dd($request);
         $loginData = $request->only(['email', 'password']);
-
         // if(Auth::attempt($loginData)) {
         //     $user = Auth::user();
         //     //dd($user);
