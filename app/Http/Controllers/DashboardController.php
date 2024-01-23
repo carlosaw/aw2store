@@ -1,0 +1,36 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Requests\UpdateProfileRequest;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\State;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+
+class DashboardController extends Controller
+{
+    public function my_account() 
+    {
+        $data['user'] = auth()->user();// Pega dados do usuário
+        $data['states'] = State::all();// Pega os estados
+        
+        return view('dashboard.my_account', $data);
+    }
+
+    public function my_account_action(UpdateProfileRequest $request)
+    {
+        //dd($request);
+        $data = $request->only(['name', 'email', 'state_id']);
+        $stateRegister = State::find($data['state_id']);
+
+        if(!$stateRegister) {
+            return redirect('/');
+        }
+        $userId = Auth::user()->id;
+        $user = User::find($userId);
+        $user->update($data);
+        return redirect()->route('my_account');
+    }
+}

@@ -2,13 +2,10 @@
 
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
-
-Route::get('/', function () {
-    $data['categories'] = [];
-    $data['states'] = [];
-    return view('home', $data);
-})->name('home');
-
+use App\Http\Controllers\DashboardController;
+/**
+ * AUTH / REGISTER ROUTES
+ */
 Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/register', [AuthController::class, 'register_action'])->name('register_action');
 
@@ -21,6 +18,19 @@ Route::get('/forgot-password', function () {
     return view('auth.forgot-password');
 })->name('forgot-password');
 
-Route::get('/select-state', [AuthController::class, 'select_state'])->name('select_state');
+// TODO: forgot-password-post
 
+
+/** PAGES */
+Route::get('/', function () {
+    $data['categories'] = [];
+    $data['states'] = [];
+    return view('home', $data);
+})->name('home');
+
+Route::get('/select-state', [AuthController::class, 'select_state'])->name('select_state');
 Route::post('/select-state', [AuthController::class, 'select_state_action'])->name('select_state_action');
+
+/** DASHBOARD */
+Route::get('/dashboard/my-account', [DashboardController::class, 'my_account'])->name('my_account');
+Route::post('/dashboard/my-account', [DashboardController::class, 'my_account_action'])->name('my_account_action');
