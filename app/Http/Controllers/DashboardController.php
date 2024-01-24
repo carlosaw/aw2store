@@ -29,4 +29,12 @@ class DashboardController extends Controller
         $user->update($data);
         return redirect()->route('my_account')->with('success', 'Perfil autalizado com sucesso!');
     }
+
+    public function my_ads() {
+        $user = Auth::user();
+        $advertises = $user->advertises;
+        //dd($advertises[0]->images);
+
+        return view('dashboard.my_ads', compact('advertises'));
+    }
 }

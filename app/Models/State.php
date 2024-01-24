@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class State extends Model
 {
     use HasFactory;
+    public $timestamps = false;
+
+    public function advertises(): HasMany {
+        return $this->hasMany(Advertise::class);
+    }
 }
