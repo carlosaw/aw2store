@@ -21,7 +21,7 @@ class UpdateProfileRequest extends FormRequest
                 'required', 'email',
                 Rule::unique('users')->ignore($userId)
             ],
-            'state_id' => 'required|numeric'
+            'state_id' => 'required|numeric|exists:states,id'
         ];
     }
 }

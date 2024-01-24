@@ -24,13 +24,9 @@ class DashboardController extends Controller
         //dd($request);
         $data = $request->only(['name', 'email', 'state_id']);
         $stateRegister = State::find($data['state_id']);
-
-        if(!$stateRegister) {
-            return redirect('/');
-        }
         $userId = Auth::user()->id;
         $user = User::find($userId);
         $user->update($data);
-        return redirect()->route('my_account');
+        return redirect()->route('my_account')->with('success', 'Perfil autalizado com sucesso!');
     }
 }

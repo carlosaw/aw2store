@@ -29,13 +29,19 @@
             >
           </div>
           <div class="sidebar-bottom">
-            <a href="/index.html"
+            <a href="{{ route('logout') }}"
               ><img src="/assets/icons/logoutIcon.png" /> Sair</a
             >
           </div>
         </div>
         <div class="profile-area">
           <h3 class="profile-title">Meu perfil</h3>
+          @if (session('success'))
+            <div class="alert alert-success">
+              {{ session('success') }}
+            </div>
+          @endif
+
           <form method="POST" action="{{ route('my_account_action') }}">
             @csrf
             <div class="name-area">
