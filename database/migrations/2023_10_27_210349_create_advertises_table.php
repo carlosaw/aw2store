@@ -18,7 +18,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug');
-            $table->decimal('price', 10,2);
+            $table->decimal('price', 10, 2);
             $table->boolean('negotiable')->default(false);
             $table->text('description');
             $table->string('contact');
