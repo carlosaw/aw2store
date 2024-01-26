@@ -12,9 +12,13 @@ class AdController extends Controller
     public function show(String $slug)
     {
         $ad = Advertise::where('slug', $slug)->first();
-        // dd($ad);
+        //dd($ad);
+        if (!$ad) {
+            return redirect()->route('home');
+        }
         $ad->views++;
         $ad->save();
+
         return view('single-ad', compact('ad'));
     }
 

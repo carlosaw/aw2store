@@ -16,7 +16,7 @@
   }
 </style>
 <div class="my-ad-item">
-  @if (empty($canEdit) && $ad->user_id == Auth::user()->id)
+  @if (empty($canEdit) && Auth::user() && $ad->user_id == Auth::user()->id)
     <span class="pill my-ad-pill">Meu Anúncio</span>
   @endif
   

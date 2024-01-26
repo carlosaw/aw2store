@@ -9,7 +9,13 @@
     />
     <link rel="stylesheet" href="/assets/style.css" />
     <link rel="stylesheet" href="/assets/adPageStyle.css" />
-    <title>B7Store</title>
+    <title>Aw2Store</title>
+    <script>
+      function callme(number, title) {
+        var message = `Olá vi seu anúncio "${title}" no Aw2Store e gostaria de mais informações.`;
+        window.open(`https://wa.me/55${number}?text=${message}`, '_blank');
+      }
+    </script>
   </head>
 
   <body>
@@ -57,7 +63,9 @@
           <div class="ad-page-text">
             {{ $ad->description }}
           </div>
-          <button class="get-touch">Entrar em contato</button>
+
+          <button onclick="callme('{{ $ad->contact }}', '{{ $ad->title }}')" class="get-touch">Entrar em contato</button>
+
           <div class="views">
             <img src="/assets/icons/eyeGrayIcon.png" />
             <div class="views-text">{{ $ad->views }} visualizações neste anúncio</div>

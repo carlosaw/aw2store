@@ -31,7 +31,7 @@ Route::get('/', function () {
     return view('home', $data);
 })->name('home');
 
-Route::get('/ad/{slug}', [AdController::class, 'show'])->name('ad_show');
+Route::get('/ad/{slug}', [AdController::class, 'show'])->name('ad.show');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/select-state', [AuthController::class, 'select_state'])->name('select_state');
