@@ -15,7 +15,7 @@
     font-size: 10px;
   }
 </style>
-<div class="my-ad-item">
+<a href="{{route('ad.show', $ad->slug)}}" class="my-ad-item" style="text-decoration: none;">
   @if (empty($canEdit) && Auth::user() && $ad->user_id == Auth::user()->id)
     <span class="pill my-ad-pill">Meu Anúncio</span>
   @endif
@@ -37,5 +37,5 @@
       style="background-image: url('{{ $ad->images->where('featured', 1)->first()->url ?? 'https://placehold.it/300x300'}}')"                 ></div>
     </div>
   <div class="ad-title">{{ $ad->title }}</div>
-  <div class="ad-price">R$ {{ number_format($ad->price, 2, ',', '.') }}</div>
-</div>
+  <div class="ad-price">R$ {{ $ad->price_formatted }}</div>
+</a>

@@ -17,12 +17,13 @@
 .secundary-photos {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   margin-top: 24px;
 }
 .secundary-image {
   width: 24%;
   aspect-ratio: 1/1;
+  margin-right: 10px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
