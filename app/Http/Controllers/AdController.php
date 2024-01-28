@@ -47,4 +47,8 @@ class AdController extends Controller
         $ad->delete();
         return redirect()->back();
     }
+
+    public function list() {
+        return view('list');
+    }
 }

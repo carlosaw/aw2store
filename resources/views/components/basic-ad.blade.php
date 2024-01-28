@@ -19,23 +19,21 @@
   @if (empty($canEdit) && Auth::user() && $ad->user_id == Auth::user()->id)
     <span class="pill my-ad-pill">Meu Anúncio</span>
   @endif
-  
+ 
   <div class="ad-image-area">
-    @if (!empty($canEdit))
+    @if(!empty($canEdit))
       <div class="ad-buttons">
-        <a href="{{ route('ad.delete', ['id' => $ad->id]) }}" class="ad-button">
+        <a href="{{route('ad.delete', ['id' => $ad->id])}}" class="ad-button">
           <img src="/assets/icons/deleteIcon.png" />
         </a>
         <div class="ad-button">
           <img src="/assets/icons/editIcon.png" />
         </div>
-      </div> 
+      </div>
     @endif
-    
-    <div
-      class="ad-image"
-      style="background-image: url('{{ $ad->images->where('featured', 1)->first()->url ?? 'https://placehold.it/300x300'}}')"                 ></div>
-    </div>
-  <div class="ad-title">{{ $ad->title }}</div>
-  <div class="ad-price">R$ {{ $ad->price_formatted }}</div>
+    <div class="ad-image" style="background-image: url('{{ $ad->images->where('featured',1)->first()->url ?? 'https://placehold.it/300x300'}}')"></div>
+  </div>
+  <div class="ad-title">{{$ad->title}}</div>
+  <div class="ad-price">R$ {{$ad->price_formatted}}</div>
+
 </a>
