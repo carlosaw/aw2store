@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 26-Jan-2024 às 19:57
+-- Tempo de geração: 28-Jan-2024 às 22:03
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.2.0
 
@@ -48,7 +48,11 @@ CREATE TABLE `advertises` (
 --
 
 INSERT INTO `advertises` (`id`, `title`, `slug`, `price`, `negotiable`, `description`, `contact`, `views`, `user_id`, `state_id`, `category_id`, `created_at`, `updated_at`) VALUES
-(2, 'Volkswagen Fusca 1968', 'fusca-68', '34991.50', 1, 'É um fato estabelecido há muito tempo que um leitor se distrai com o conteúdo legível de uma página ao olhar para seu layout.', '55111211211', 64, 1, 1, 1, '2024-01-25 19:04:38', '2024-01-26 18:51:21');
+(2, 'Volkswagen Fusca 1968', 'fusca-68', '34991.50', 1, 'É um fato estabelecido há muito tempo que um leitor se distrai com o conteúdo legível de uma página ao olhar para seu layout.', '55111211211', 134, 1, 1, 1, '2024-01-25 19:04:38', '2024-01-28 19:25:24'),
+(3, 'Fuscão 1', 'fusca-69', '75000.00', 1, 'É um fato estabelecido há muito tempo que um leitor se distrai com o conteúdo legível de uma página ao olhar para seu layout.', '55111211211', 257, 1, 1, 1, '2024-01-25 14:20:15', '2024-01-28 19:27:51'),
+(4, 'Fuscão 2', 'fusca-70', '65000.00', 1, 'É um fato estabelecido há muito tempo que um leitor se distrai com o conteúdo legível de uma página ao olhar para seu layout.', '55111211211', 107, 1, 1, 1, '2024-01-28 14:22:19', '2024-01-28 19:28:00'),
+(5, 'Fuscão 3', 'fusca-71', '55000.00', 1, 'É um fato estabelecido há muito tempo que um leitor se distrai com o conteúdo legível de uma página ao olhar para seu layout.', '55111211211', 101, 1, 1, 1, '2024-01-28 14:16:07', '2024-01-28 19:11:43'),
+(6, 'Fuscão 4', 'fusca-72', '45000.00', 1, 'É um fato estabelecido há muito tempo que um leitor se distrai com o conteúdo legível de uma página ao olhar para seu layout.', '55111211211', 156, 2, 1, 1, '2024-01-25 19:04:38', '2024-01-28 19:10:34');
 
 -- --------------------------------------------------------
 
@@ -70,7 +74,12 @@ CREATE TABLE `advertise_images` (
 --
 
 INSERT INTO `advertise_images` (`id`, `url`, `advertise_id`, `featured`, `created_at`, `updated_at`) VALUES
-(2, '/assets/myAds/game1.png', 2, 1, NULL, NULL);
+(2, '/assets/adFusca/fusca.png', 2, 1, NULL, NULL),
+(3, '/assets/adFusca/fusca6.png', 2, 0, NULL, NULL),
+(4, '/assets/adFusca/fusca7.png', 4, 1, NULL, NULL),
+(5, '/assets/adFusca/fusca8.png', 2, 0, NULL, NULL),
+(9, '/assets/adFusca/fusca8.png', 3, 1, NULL, NULL),
+(10, '/assets/adFusca/fusca2.png', 3, 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -256,13 +265,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de tabela `advertises`
 --
 ALTER TABLE `advertises`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `advertise_images`
 --
 ALTER TABLE `advertise_images`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `categories`
