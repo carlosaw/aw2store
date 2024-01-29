@@ -7,14 +7,14 @@ use Illuminate\View\Component;
 use Illuminate\Contracts\View\View;
 use App\Models\Advertise;
 
-class FilteredAdvertises extends Component
+class filteredAdvertises extends Component
 {
     public $advertisesList;
 
     public function __construct()
-    
+
     {
-        $this->advertisesList = Advertise::all();
+        $this->advertisesList = Advertise::orderBy('created_at', 'desc')->limit(4)->get();
     }
 
     /**

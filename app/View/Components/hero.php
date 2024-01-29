@@ -2,6 +2,8 @@
 
 namespace App\View\Components;
 
+use App\Models\Category;
+use App\Models\State;
 use Closure;
 use Illuminate\View\Component;
 use Illuminate\Contracts\View\View;
@@ -16,19 +18,9 @@ class hero extends Component
     public function __construct()
     {
         //Carregando todos os estados do Brasil.
-        $this->states = [
-            ['value' => 'AC', 'name' => 'ACRE'],
-            ['value' => 'MT', 'name' => 'MATO GROSSO'],
-            ['value' => 'PR', 'name' => 'PARANÁ'],
-            ['value' => 'SP', 'name' => 'SÃO PAULO'],
-            ['value' => 'MG', 'name' => 'MINAS GERAIS'],
-        ];
+        $this->states = State::all();
 
-        $this->categories = [
-            ['value' => 'categoria1', 'name' => 'Categoria 1'],
-            ['value' => 'categoria2', 'name' => 'Categoria 2'],
-            ['value' => 'categoria3', 'name' => 'Categoria 3']
-        ];
+        $this->categories = Category::all();
     }
 
     /**

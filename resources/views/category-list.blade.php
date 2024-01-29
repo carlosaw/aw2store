@@ -19,7 +19,22 @@
     <x-base.header />
     <!-- Header -->
     
-    <livewire:ad-list />
+    <div class="ads">
+      <div class="ads-title">Anúncios recentes</div>
+      <div class="ads-area">
+        @if(count($filteredAds) > 0)
+          @foreach($filteredAds as $ad)
+            <x-basic-ad :ad="$ad" />
+          @endforeach
+        @else
+          <span> Não há anúncios para exibir! </span>
+        @endif
+      </div>
+
+      <div class="mt-10">
+        {{ $filteredAds->links() }}
+      </div>
+    </div>
 
     <!-- Footer -->
     <x-base.footer />
