@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 28-Jan-2024 às 22:03
+-- Tempo de geração: 29-Jan-2024 às 21:53
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.2.0
 
@@ -48,11 +48,16 @@ CREATE TABLE `advertises` (
 --
 
 INSERT INTO `advertises` (`id`, `title`, `slug`, `price`, `negotiable`, `description`, `contact`, `views`, `user_id`, `state_id`, `category_id`, `created_at`, `updated_at`) VALUES
-(2, 'Volkswagen Fusca 1968', 'fusca-68', '34991.50', 1, 'É um fato estabelecido há muito tempo que um leitor se distrai com o conteúdo legível de uma página ao olhar para seu layout.', '55111211211', 134, 1, 1, 1, '2024-01-25 19:04:38', '2024-01-28 19:25:24'),
-(3, 'Fuscão 1', 'fusca-69', '75000.00', 1, 'É um fato estabelecido há muito tempo que um leitor se distrai com o conteúdo legível de uma página ao olhar para seu layout.', '55111211211', 257, 1, 1, 1, '2024-01-25 14:20:15', '2024-01-28 19:27:51'),
-(4, 'Fuscão 2', 'fusca-70', '65000.00', 1, 'É um fato estabelecido há muito tempo que um leitor se distrai com o conteúdo legível de uma página ao olhar para seu layout.', '55111211211', 107, 1, 1, 1, '2024-01-28 14:22:19', '2024-01-28 19:28:00'),
-(5, 'Fuscão 3', 'fusca-71', '55000.00', 1, 'É um fato estabelecido há muito tempo que um leitor se distrai com o conteúdo legível de uma página ao olhar para seu layout.', '55111211211', 101, 1, 1, 1, '2024-01-28 14:16:07', '2024-01-28 19:11:43'),
-(6, 'Fuscão 4', 'fusca-72', '45000.00', 1, 'É um fato estabelecido há muito tempo que um leitor se distrai com o conteúdo legível de uma página ao olhar para seu layout.', '55111211211', 156, 2, 1, 1, '2024-01-25 19:04:38', '2024-01-28 19:10:34');
+(2, 'Volkswagen Fusca 1968', 'fusca-68', '34991.50', 1, 'É um fato estabelecido há muito tempo que um leitor se distrai com o conteúdo legível de uma página ao olhar para seu layout.', '55111211211', 136, 1, 1, 2, '2024-01-25 19:04:38', '2024-01-29 19:33:23'),
+(3, 'Fuscão 1', 'fusca-69', '75000.00', 1, 'É um fato estabelecido há muito tempo que um leitor se distrai com o conteúdo legível de uma página ao olhar para seu layout.', '55111211211', 257, 1, 2, 2, '2024-01-25 14:20:15', '2024-01-28 19:27:51'),
+(4, 'Fuscão 2', 'fusca-70', '65000.00', 1, 'É um fato estabelecido há muito tempo que um leitor se distrai com o conteúdo legível de uma página ao olhar para seu layout.', '55111211211', 108, 1, 3, 1, '2024-01-28 14:22:19', '2024-01-29 19:21:32'),
+(5, 'Fuscão 3', 'fusca-71', '55000.00', 1, 'É um fato estabelecido há muito tempo que um leitor se distrai com o conteúdo legível de uma página ao olhar para seu layout.', '55111211211', 101, 1, 4, 1, '2024-01-28 14:16:07', '2024-01-28 19:11:43'),
+(6, 'Fuscão 4', 'fusca-72', '45000.00', 1, 'É um fato estabelecido há muito tempo que um leitor se distrai com o conteúdo legível de uma página ao olhar para seu layout.', '55111211211', 156, 2, 5, 1, '2024-01-25 19:04:38', '2024-01-28 19:10:34'),
+(7, 'Fuscão 5', 'fusca-72', '45000.00', 1, 'É um fato estabelecido há muito tempo que um leitor se distrai com o conteúdo legível de uma página ao olhar para seu layout.', '55111211211', 156, 2, 5, 1, '2024-01-25 19:04:38', '2024-01-28 19:10:34'),
+(8, 'Fuscão 6', 'fusca-72', '45000.00', 1, 'É um fato estabelecido há muito tempo que um leitor se distrai com o conteúdo legível de uma página ao olhar para seu layout.', '55111211211', 156, 2, 5, 1, '2024-01-25 19:04:38', '2024-01-28 19:10:34'),
+(9, 'Fuscão 7', 'fusca-72', '45000.00', 1, 'É um fato estabelecido há muito tempo que um leitor se distrai com o conteúdo legível de uma página ao olhar para seu layout.', '55111211211', 156, 2, 5, 1, '2024-01-25 19:04:38', '2024-01-28 19:10:34'),
+(10, 'Fuscão 8', 'fusca-72', '45000.00', 1, 'É um fato estabelecido há muito tempo que um leitor se distrai com o conteúdo legível de uma página ao olhar para seu layout.', '55111211211', 156, 2, 5, 1, '2024-01-25 19:04:38', '2024-01-28 19:10:34'),
+(11, 'Fuscão 9', 'fusca-72', '45000.00', 1, 'É um fato estabelecido há muito tempo que um leitor se distrai com o conteúdo legível de uma página ao olhar para seu layout.', '55111211211', 156, 2, 5, 1, '2024-01-25 19:04:38', '2024-01-28 19:10:34');
 
 -- --------------------------------------------------------
 
@@ -89,15 +94,21 @@ INSERT INTO `advertise_images` (`id`, `url`, `advertise_id`, `featured`, `create
 
 CREATE TABLE `categories` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL
+  `name` varchar(255) NOT NULL,
+  `slug` varchar(255) DEFAULT NULL,
+  `icon` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Extraindo dados da tabela `categories`
 --
 
-INSERT INTO `categories` (`id`, `name`) VALUES
-(1, 'Veículos');
+INSERT INTO `categories` (`id`, `name`, `slug`, `icon`) VALUES
+(1, 'Carros', 'carros', '/assets/icons/carIcon.png'),
+(2, 'Eletrônicos', 'eletronicos', '/assets/icons/eletronicsIcon'),
+(3, 'Roupas', 'roupas', '/assets/icons/clothesIcon.png'),
+(4, 'Esportes', 'esportes', '/assets/icons/sportsIcon.png'),
+(5, 'Bebês', 'bebes', '/assets/icons/babiesIcon.png');
 
 -- --------------------------------------------------------
 
@@ -124,7 +135,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (6, '2023_10_27_203951_create_states_table', 1),
 (7, '2023_10_27_205102_alter_table_users_add_state', 1),
 (8, '2023_10_27_210349_create_advertises_table', 1),
-(9, '2023_10_29_074637_create_table_advertise_images', 1);
+(9, '2023_10_29_074637_create_table_advertise_images', 1),
+(10, '2024_01_29_160845_alter_table_categories_add_slug_column', 2),
+(11, '2024_01_29_161729_alter_table_categories_add_icon_column', 2);
 
 -- --------------------------------------------------------
 
@@ -229,7 +242,8 @@ ALTER TABLE `advertise_images`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `categories__name_unique` (`name`);
+  ADD UNIQUE KEY `categories__name_unique` (`name`),
+  ADD UNIQUE KEY `categories_slug_unique` (`slug`);
 
 --
 -- Índices para tabela `migrations`
@@ -265,7 +279,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de tabela `advertises`
 --
 ALTER TABLE `advertises`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de tabela `advertise_images`
@@ -277,13 +291,13 @@ ALTER TABLE `advertise_images`
 -- AUTO_INCREMENT de tabela `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de tabela `states`
