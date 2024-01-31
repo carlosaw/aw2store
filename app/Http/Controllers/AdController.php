@@ -70,4 +70,8 @@ class AdController extends Controller
 
         return view('category-list', compact('filteredAds', 'category'));
     }
+
+    public function create() {
+        return view('dashboard/ad_create');
+    }
 }

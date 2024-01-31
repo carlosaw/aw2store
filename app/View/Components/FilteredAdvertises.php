@@ -7,7 +7,7 @@ use Illuminate\View\Component;
 use Illuminate\Contracts\View\View;
 use App\Models\Advertise;
 
-class filteredAdvertises extends Component
+class FilteredAdvertises extends Component
 {
     public $advertisesList;
 

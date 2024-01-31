@@ -11,11 +11,11 @@ use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
-    public function my_account() 
+    public function my_account()
     {
-        $data['user'] = auth()->user();// Pega dados do usuário
-        $data['states'] = State::all();// Pega os estados
-        
+        $data['user'] = auth()->user(); // Pega dados do usuário
+        $data['states'] = State::all(); // Pega os estados
+
         return view('dashboard.my_account', $data);
     }
 
@@ -30,7 +30,8 @@ class DashboardController extends Controller
         return redirect()->route('my_account')->with('success', 'Perfil autalizado com sucesso!');
     }
 
-    public function my_ads() {
+    public function my_ads()
+    {
         $user = Auth::user();
         $advertises = $user->advertises;
         //dd($advertises[0]->images);
