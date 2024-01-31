@@ -19,25 +19,29 @@
     <x-base.header />
     <!-- Header -->
     
-    <div class="ads">
-      <div class="ads-title">Anúncios recentes</div>
-      <div class="ads-area">
-        @if(count($filteredAds) > 0)
-          @foreach($filteredAds as $ad)
-            <x-basic-ad :ad="$ad" />
-          @endforeach
-        @else
-          <span> Não há anúncios para exibir! </span>
-        @endif
-      </div>
+ 
+    <main>
+      <div class="ads">
+        <div class="ads-title">Anúncios da categoria <b>{{$category->name}}</b></div>
+        <div class="ads-area">
+          @if(count($filteredAds) > 0)
+            @foreach($filteredAds as $ad)
+              <x-basic-ad :ad="$ad" />
+            @endforeach
+          @else
+            <span> Não há anúncios para exibir! </span>
+          @endif
+        </div>
 
-      <div class="mt-10">
-        {{ $filteredAds->links() }}
+        <div class="mt-10">
+          {{ $filteredAds->links() }}
+        </div>
       </div>
-    </div>
+      
+      <!-- Footer -->
+      <x-base.footer />
+      <!-- Footer -->
 
-    <!-- Footer -->
-    <x-base.footer />
-    <!-- Footer -->
+    </main>
   </body>
 </html>

@@ -197,6 +197,13 @@ main {
   cursor: pointer;
   border: 0;
 }
+.buttons .eletronics:hover,
+.buttons .clothes:hover,
+.buttons .sports:hover,
+.buttons .babies:hover {
+  border: 1px solid #55e1f3;
+  opacity: .7;
+}
 .buttons .cars {
   background-color: #5c7bfa;
   color: #fff;
@@ -206,11 +213,14 @@ main {
   line-height: normal;
   border: 0;
 }
+.buttons .cars:hover {
+  opacity: .8;
+}
 .buttons .eletronics,
 .buttons .clothes,
 .buttons .sports,
 .buttons .babies {
-  background-color: #f5f7ff;
+  background-color: #e5e9fa;
   color: #5c7bfa;
 }
 .buttons .cars img,

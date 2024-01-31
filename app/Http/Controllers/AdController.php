@@ -55,7 +55,7 @@ class AdController extends Controller
         return view('list');
     }
 
-    public function category(Request $r, String $slug)
+    public function Category(Request $r, String $slug)
     {
         $category = Category::where('slug', $slug)->first();
 
@@ -68,6 +68,6 @@ class AdController extends Controller
             ->orderBy('created_at', 'desc')
             ->paginate(4);
 
-        return view('category-list', compact('filteredAds'));
+        return view('category-list', compact('filteredAds', 'category'));
     }
 }

@@ -21,6 +21,10 @@
       <x-hero />
       <!--/Hero Área -->
 
+      <!-- Categories Area -->
+      <livewire:categories-list />
+      <!-- /Categories Area -->
+
       <x-filtered-advertises />
       
     </main>
