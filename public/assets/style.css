@@ -12,7 +12,7 @@ body {
   font-family: "Inter", Arial, Helvetica, sans-serif;
 }
 
-/* 
+/*
 * Header
 */
 header {
@@ -95,11 +95,11 @@ header {
   width: 130px;
 }
 
-/* 
+/*
 * /Header
 */
 
-/* 
+/*
 * Main
 */
 main {
@@ -108,7 +108,7 @@ main {
   min-height: calc(100vh-var(--footerHeight));
 }
 
-/* 
+/*
 * Hero Area
 */
 .hero-area {
@@ -182,11 +182,11 @@ main {
   cursor: pointer;
 }
 
-/* 
+/*
 * /Hero Area
 */
 
-/* 
+/*
 * Categories Area
 */
 .categories-area {
@@ -264,11 +264,11 @@ main {
   margin-right: 8px;
 }
 
-/* 
+/*
 * /Categories Area
 */
 
-/* 
+/*
 * Ads
 */
 
@@ -333,15 +333,15 @@ main {
   text-overflow: ellipsis;
 }
 
-/* 
+/*
 * /Ads
 */
 
-/* 
+/*
 * /Main
 */
 
-/* 
+/*
 * Footer
 */
 footer {
@@ -370,7 +370,7 @@ footer span:last-child {
   line-height: normal;
 }
 
-/* 
+/*
 * Footer
 */
 
@@ -593,4 +593,12 @@ footer span:last-child {
   footer span:first-child {
     margin-top: 30px;
   }
+}
+.form-error {
+    color: red;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 5px;
+    margin-left: 5px;
 }

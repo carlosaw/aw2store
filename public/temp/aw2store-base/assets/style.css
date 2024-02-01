@@ -9,7 +9,7 @@
 body {
   font-family: "Inter", Arial, Helvetica, sans-serif;
 }
-/* 
+/*
 * Header
 */
 header {
@@ -82,11 +82,11 @@ header {
   color: #fff;
   width: 130px;
 }
-/* 
+/*
 * /Header
 */
 
-/* 
+/*
 * Main
 */
 main {
@@ -94,7 +94,7 @@ main {
   margin: auto;
   min-height: calc(100vh-var(--footerHeight));
 }
-/* 
+/*
 * Hero Area
 */
 .hero-area {
@@ -161,11 +161,11 @@ main {
   border: 0;
   cursor: pointer;
 }
-/* 
+/*
 * /Hero Area
 */
 
-/* 
+/*
 * Categories Area
 */
 .categories-area {
@@ -220,11 +220,11 @@ main {
 .buttons .babies img {
   margin-right: 8px;
 }
-/* 
+/*
 * /Categories Area
 */
 
-/* 
+/*
 * Ads
 */
 
@@ -281,15 +281,15 @@ main {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-/* 
+/*
 * /Ads
 */
 
-/* 
+/*
 * /Main
 */
 
-/* 
+/*
 * Footer
 */
 footer {
@@ -316,7 +316,7 @@ footer span:last-child {
   font-weight: 700;
   line-height: normal;
 }
-/* 
+/*
 * Footer
 */
 
