@@ -81,7 +81,7 @@
 .newAd-area-right {
   width: 80%;
   max-width: 400px;
-  padding-left: 30px;
+  /* padding-left: 30px; */
 }
 form {
   margin: 0;

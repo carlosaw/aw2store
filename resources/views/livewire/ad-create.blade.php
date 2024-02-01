@@ -10,30 +10,36 @@
               <div class="area-left-up-img-text">
                 <span onclick="openFileDialog()">Clique aqui</span> para enviar uma imagem
               </div>
+              @error('photos') <span class="form-error">{{ $message }}</span>@enderror
             </div>
           </div>
           <div class="area-left-bottom">
-            <div class="smallpics">
-              <img src="/assets/icons/imageSmallIcon.png" />
-            </div>
-            <div class="smallpics">
-              <img src="/assets/icons/imageSmallIcon.png" />
-            </div>
-            <div class="smallpics">
-              <img src="/assets/icons/imageSmallIcon.png" />
-            </div>
-            <div class="smallpics">
-              <img src="/assets/icons/imageSmallIcon.png" />
-            </div>
-            <div class="smallpics">
-              <img src="/assets/icons/imageSmallIcon.png" />
-            </div>
+
+            @foreach ($photos as $photo)            
+              <div class="smallpics">
+                <img src="{{ $photo->temporaryUrl() }}" />
+              </div>
+            @endforeach
+
+            <!--
+              Temos um número (N) de fotos (1 até 5).
+              Temos um número (MAX) máximo de itens á exibir.
+              MAX-N = Número de placeholders que eu preciso exibir.
+              Fazer um loop para exibir os placeholders.
+            -->
+
+            @for($i = count($photos); $i < 5; $i++)
+              <div class="smallpics">
+                <img src="/assets/icons/imageSmallIcon.png" />
+              </div>
+            @endfor
+
           </div>
         </div>
         <div class="newAd-area-right">
           <form class="newAd-form" wire:submit="save">
             {{-- Input para fotos --}}
-            <input id="file-upload" style="visibility: hidden;" type="file" wire:model="photos" multiple />
+            <input id="file-upload" style="visibility: hidden;" type="file" wire:model="photos" multiple accept="image/jpeg, image/png" />
 
             <div class="title-area">
               <div class="title-label">Título do anúncio *</div>
@@ -50,6 +56,7 @@
                 <div class="negotiable-label">Negociável? *</div>
                 @error('negotiable') <span class="form-error">{{ $message }}</span>@enderror
                 <select  wire:model="negotiable">
+                  <option>Sim*Não</option>
                   <option value="0" selected>Não</option>
                   <option value="1">Sim</option>
                 </select>

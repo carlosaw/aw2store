@@ -17,6 +17,8 @@ class AdCreate extends Component
     public $photos = [];
 
     protected $rules = [
+        'photos' => 'required|array|min:1|max:5',
+        'photos.*' => 'image|max:2048',
         'title' => 'required|min:8|max:255',
         'price' => 'required|numeric',
         'negotiable' => 'boolean',
@@ -36,7 +38,7 @@ class AdCreate extends Component
         //dd($this->title);
         //dd($this->category_id);
         // return 'saved';
-        dd($this->photos);
+        //dd($this->photos);
     }
 
     /**
