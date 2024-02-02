@@ -74,4 +74,15 @@ class AdController extends Controller
     public function create() {
         return view('dashboard/ad_create');
     }
+    public function create_action(Request $request) {
+        $title = $request->title;
+        $price = $request->price;
+        $negotiable = $request->negotiable;
+        $category_id = $request->category_id;
+        $description = $request->description;
+
+       dd($title, $price, $negotiable, $category_id, $description);
+
+        //return view('dashboard/ad_create');
+    }
 }

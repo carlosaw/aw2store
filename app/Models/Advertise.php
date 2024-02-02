@@ -9,6 +9,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Advertise extends Model
 {
+    protected $fillable = [
+        'title', 'price', 'negotiable', 'category', 'description'
+    ];
     use HasFactory;
 
     public function category(): BelongsTo
@@ -29,7 +32,7 @@ class Advertise extends Model
         return $this->hasMany(AdvertiseImage::class);
     }
 
-    public function getPriceFormattedAttribute():string 
+    public function getPriceFormattedAttribute():string
     {
         return number_format($this->price, 2, ',', '.');
     }
