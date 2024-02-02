@@ -7,6 +7,8 @@ use App\Models\Advertise;
 use App\Models\AdvertiseImage;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Requests\AdvertiseRequest;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class AdController extends Controller
@@ -74,15 +76,36 @@ class AdController extends Controller
     public function create() {
         return view('dashboard/ad_create');
     }
-    public function create_action(Request $request) {
-        $title = $request->title;
-        $price = $request->price;
-        $negotiable = $request->negotiable;
-        $category_id = $request->category_id;
-        $description = $request->description;
 
-       dd($title, $price, $negotiable, $category_id, $description);
+    public function create_action(AdvertiseRequest $request)
+    {
+        // if($request->title) {
+        //     echo 'O código chegou até aqui!';
+        // dd($request);
+        // } else {
+        //     echo 'O código NÃO chegou até aqui!';
+        // }
+       
+        $userId = Auth::user()->id;
+        $view = 0;
 
-        //return view('dashboard/ad_create');
+        $new_ad = [
+            'title' => $request->title,
+            'slug' => $request->slug,
+            'price' => $request->price,
+            'negotiable' => $request->negotiable,
+            'category_id' => $request->category_id,
+            'description' => $request->description,
+            'contact' => $request->contact,
+            'views' => $view,
+            'user_id' => $userId,
+            'state_id' => $request->state_id,
+        ];
+
+            $new_ad = new Advertise($new_ad);            
+            $new_ad->save();
+            dd($new_ad);
+        
+        return view('dashboard/ad_create');
     }
 }
