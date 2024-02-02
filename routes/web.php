@@ -45,7 +45,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard/my-ads', [DashboardController::class, 'my_ads'])->name('my_ads');
 
     Route::get('/dashboard/advertise', [AdController::class, 'create'])->name('ad.create');
-    
+    Route::post('/dashboard/advertise', [AdController::class, 'create_action'])->name('ad.create_action');
+
     Route::get('/dashboard/ad/delete/{id}', [AdController::class, 'delete'])->name('ad.delete');
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 });

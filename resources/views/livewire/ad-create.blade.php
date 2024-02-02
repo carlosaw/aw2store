@@ -15,7 +15,7 @@
           </div>
           <div class="area-left-bottom">
 
-            @foreach ($photos as $photo)            
+            @foreach ($photos as $photo)
               <div class="smallpics">
                 <img src="{{ $photo->temporaryUrl() }}" />
               </div>
@@ -37,25 +37,27 @@
           </div>
         </div>
         <div class="newAd-area-right">
-          <form class="newAd-form" wire:submit="save">
+
+          <form method="POST" action="{{ route('ad.create_action') }}" class="newAd-form" wire:submit="save">
+            @csrf
             {{-- Input para fotos --}}
-            <input id="file-upload" style="visibility: hidden;" type="file" wire:model="photos" multiple accept="image/jpeg, image/png" />
+            <input name="photos" id="file-upload" style="visibility: hidden;" type="file" wire:model="photos" multiple accept="image/jpeg, image/png" />
 
             <div class="title-area">
               <div class="title-label">Título do anúncio *</div>
               @error('title') <span class="form-error">{{ $message }}</span>@enderror
-              <input wire:model="title" type="text" placeholder="Digite o título do anúncio" />
+              <input name="title" wire:model="title" type="text" placeholder="Digite o título do anúncio" />
             </div>
             <div class="value-area">
               <div class="value-label">
                 <div class="value-area-text">Valor *</div>
                 @error('price') <span class="form-error">{{ $message }}</span>@enderror
-                <input wire:model="price" type="text" placeholder="Digite o valor" />
+                <input name="price" wire:model="price" type="text" placeholder="Digite o valor" />
               </div>
               <div class="negotiable-area">
                 <div class="negotiable-label">Negociável? *</div>
                 @error('negotiable') <span class="form-error">{{ $message }}</span>@enderror
-                <select  wire:model="negotiable">
+                <select name="negotiable"  wire:model="negotiable">
                   <option>Sim*Não</option>
                   <option value="0" selected>Não</option>
                   <option value="1">Sim</option>
@@ -66,7 +68,7 @@
             <div class="newAd-categories-area">
               <div class="newAd-categories-label">Categorias *</div>
               @error('category_id') <span class="form-error">{{ $message }}</span>@enderror
-              <select wire:model="category_id" class="newAd-categories" required>
+              <select name="category_id" wire:model="category_id" class="newAd-categories" required>
                 <option selected>
                   Selecione uma categoria
                 </option>
@@ -80,6 +82,7 @@
               <div class="description-label">Descrição *</div>
               @error('description') <span class="form-error">{{ $message }}</span>@enderror
               <textarea
+                    name="description"
                     wire:model="description"
                     class="description-text"
                     placeholder="Digite a descrição do anúncio"
@@ -87,7 +90,7 @@
                 </textarea>
 
             </div>
-            <button class="newAd-button">Criar anúncio</button>
+            <button onclick="submit()" class="newAd-button">Criar anúncio</button>
           </form>
         </div>
       </div>
