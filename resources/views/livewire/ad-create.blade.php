@@ -42,18 +42,18 @@
             @csrf
             {{-- Input para fotos --}}
             <input name="photos" id="file-upload" style="visibility: hidden;" type="file" wire:model="photos" multiple accept="image/jpeg, image/png" />
-          
+
             <div class="title-area">
               <div class="title-label">Título do anúncio *</div>
               @error('title') <span class="form-error">{{ $message }}</span>@enderror
               <input name="title" wire:model="title" type="text" placeholder="Digite o título do anúncio" />
             </div>
 
-            {{-- <div class="title-area">
+            <div class="title-area" style="visibility: hidden; margin-top:-100px">
               <div class="title-label">Slug *</div>
               @error('slug') <span class="form-error">{{ $message }}</span>@enderror
               <input name="slug" wire:model="slug" type="text" placeholder="Digite o slug do anúncio" />
-            </div> --}}
+            </div>
 
             <div class="value-area">
               <div class="value-label">
@@ -95,7 +95,7 @@
                     placeholder="Digite a descrição do anúncio"
                 >
                 </textarea>
-              
+
                 <div class="title-area">
                   <div class="title-label">Contato *</div>
                   @error('contact') <span class="form-error">{{ $message }}</span>@enderror

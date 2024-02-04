@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class AdvertiseRequest extends FormRequest
 {
-    
+
     public function rules(): array
     {
         return [
@@ -20,7 +20,7 @@ class AdvertiseRequest extends FormRequest
             'views' => 'nullable',
             'user_id' => 'nullable',
             'state_id'=> 'nullable',
-            'category_id' => 'required',    
+            'category_id' => 'required',
         ];
     }
 }

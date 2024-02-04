@@ -4,7 +4,10 @@ namespace App\Livewire;
 
 use App\Http\Requests\AdvertiseRequest;
 use App\Models\Advertise;
+use App\Models\AdvertiseImage;
 use App\Models\Category;
+use App\Models\State;
+use App\Models\User;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -12,6 +15,7 @@ class AdCreate extends Component
 {
     use WithFileUploads;
     public $title;
+    public $slug;
     public $description;
     public $price;
     public $negotiable;
@@ -25,20 +29,24 @@ class AdCreate extends Component
         'photos' => 'required|array|min:1|max:5',
         'photos.*' => 'image|max:2048',
         'title' => 'required|min:8|max:255',
-        'slug' => '0',
+        'slug' => 'nullable',
         'price' => 'required|numeric',
         'negotiable' => 'boolean',
         'description' => 'required|min:8|max:255',
         'category_id' => 'required|exists:categories,id',
         'contact' => 'required|numeric',
-        'state_id' => 'nullable'
+        'state_id' => 'nullable',
+        'user_id' => 'required|numeric'
     ];
 
     public function render()
     {
+        $advertise_images = AdvertiseImage::all();
         $categories = Category::all();
         $advertises = Advertise::all();
-        return view('livewire.ad-create', compact('categories', 'advertises'));
+        $states = State::all();
+        $users = User::all();
+        return view('livewire.ad-create', compact('categories', 'advertises', 'states', 'users', 'advertise_images'));
     }
 
     public function save()
