@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Advertise;
-use App\Models\AdvertiseImage;
+use App\Models\State;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests\AdvertiseRequest;
+use App\Models\AdvertiseImage;
 use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 
 class AdController extends Controller
@@ -79,33 +81,49 @@ class AdController extends Controller
 
     public function create_action(AdvertiseRequest $request)
     {
-        // if($request->title) {
-        //     echo 'O código chegou até aqui!';
-        // dd($request);
-        // } else {
-        //     echo 'O código NÃO chegou até aqui!';
-        // }
-       
-        $userId = Auth::user()->id;
+        $user = Auth::user();// Usuário autenticado
+        $user_id = Auth::user()->id;// ID do usuário
+        $state_id = $user->state->id;// ID do Estado do usuário
+
         $view = 0;
 
         $new_ad = [
             'title' => $request->title,
-            'slug' => $request->slug,
+            'slug' => Str::slug($request->title),
             'price' => $request->price,
             'negotiable' => $request->negotiable,
             'category_id' => $request->category_id,
             'description' => $request->description,
             'contact' => $request->contact,
             'views' => $view,
-            'user_id' => $userId,
-            'state_id' => $request->state_id,
+            'user_id' => $user_id,
+            'state_id' => $state_id,
+            //'photos' => $photos
         ];
 
-            $new_ad = new Advertise($new_ad);            
-            $new_ad->save();
+        if($new_ad) {
+            $advertisesId = Advertise::get('id');
+            $adId = AdvertiseImage::get('advertise_id');
+            dd($adId);
+
+            $photos = AdvertiseImage::get('url', 'id')->where('advertise_id', $advertisesId);
+            $photos[] = $request->photos;
+
+            $new_photo = [
+                'url' => $request->photos,
+                'advertise_id' => $request->advertise_id,
+                'featured' => $request->featured
+            ];
+
+            $new_photo = new AdvertiseImage($new_photo);
+
+            dd($new_photo);
+        }
+
+            $new_ad = new Advertise($new_ad);
+            //$new_ad->save();
             dd($new_ad);
-        
+
         return view('dashboard/ad_create');
     }
 }

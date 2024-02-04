@@ -8,5 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class AdvertiseImage extends Model
 {
     use HasFactory;
+    public $url;
+    public $advertise_id;
+    public $featured;
+
     protected $guarded = ['id'];
+
 }

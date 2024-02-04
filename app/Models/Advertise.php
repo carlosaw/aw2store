@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Advertise extends Model
 {
     protected $fillable = [
-        'title', 'price', 'slug?', 'negotiable', 'description', 'contact', 'views', 'user_id', 'state_id?', 'category_id?' 
+        'title', 'price', 'slug', 'negotiable', 'description', 'contact', 'views', 'user_id', 'state_id', 'category_id', 'photos'
     ];
     use HasFactory;
 
