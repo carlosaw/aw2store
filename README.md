@@ -1,4 +1,4 @@
-# Install 
+# Install   *running
 ## composer install
 
 # Key generate
